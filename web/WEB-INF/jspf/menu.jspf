@@ -1,0 +1,9 @@
+
+<%@ page pageEncoding="UTF-8" %>
+<nav>
+    <h2>Pedido</h2>
+    <ul>
+        <li><a href="listaColeta.html">Listar Coleta</a></li>
+        <li><a href="novo.html">Novo</a></li>
+    </ul>
+</nav>
