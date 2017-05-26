@@ -3,7 +3,9 @@
 <nav>
     <h2>Pedido</h2>
     <ul>
+        <li><a href="novo.html">Nova Coleta</a></li>
+        <li><a href="novaLeitura.html">Nova Leitura</a></li>
         <li><a href="listaColeta.html">Listar Coleta</a></li>
-        <li><a href="novo.html">Novo</a></li>
+       
     </ul>
 </nav>
