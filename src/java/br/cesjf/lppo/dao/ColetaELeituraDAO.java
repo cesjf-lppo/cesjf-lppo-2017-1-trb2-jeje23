@@ -2,6 +2,7 @@
 package br.cesjf.lppo.dao;
 
 import br.cesjf.lppo.Coleta;
+import br.cesjf.lppo.Leitura;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,12 +14,17 @@ import java.util.List;
 public class ColetaELeituraDAO {
      private final PreparedStatement opNovaColeta;
      private final PreparedStatement opListarColeta;
+     private final PreparedStatement opNovaLeitura;
+     //private final PreparedStatement opListarLeitura;
+     
      
        public ColetaELeituraDAO ()throws Exception{
             Connection conexao = ConnectionFactory.createConnection();
                 
                 opNovaColeta  = conexao.prepareStatement("INSERT INTO coleta (descricao) VALUES(?)");
                 opListarColeta = conexao.prepareStatement("SELECT * FROM coleta");
+                opNovaLeitura = conexao.prepareStatement("INSERT INTO leitura (coleta, unidade, local) VALUES(?, ?, ?)");
+                //opListarLeitura = conexao.prepareStatement("SELECT * FROM leitura");
             
                 
                
@@ -54,4 +60,18 @@ public class ColetaELeituraDAO {
             throw new Exception("Erro ao listar pedidos no banco", ex);
         }
     }
-}
+      public void criaLeitura(Leitura novaLeitura) throws Exception {
+        try{
+        opNovaLeitura.clearParameters();
+        opNovaLeitura.setInt(1, novaLeitura.getColeta());
+        opNovaLeitura.setString(2, novaLeitura.getUnidade());
+        opNovaLeitura.setString(3, novaLeitura.getLocal());
+        opNovaColeta.executeUpdate();
+        
+        }catch (Exception ex){
+            throw new Exception("Erro ao inserir a coleta", ex);
+        }
+    }
+
+ }
+
