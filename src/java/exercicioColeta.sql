@@ -15,4 +15,5 @@ local VARCHAR (50) NOT NULL,
 leitura REAL NOT NULL,
 unidade VARCHAR (50) NOT NULL,
 atualizacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+constraint fkid foreign key(coleta) references coleta(id)
 );
